@@ -72,7 +72,7 @@ margin: 0px;
       
       <b>Observação</b>: Os itens que estão em acima de 100% disponível, aparecerão em verde. 
       Quanto aos demais são de extrema importância a observação dos mesmos, pois estão com estoque menor ou igual ao estoque mínimo.<p>
-       <i> Este e-mail é automático, favor não responder.</i> 
+       <i> Este e-mail é automático, favor não responder. Para acesso as informações <a href="http://192.168.254.16:8080/compras_bi/public/estoque" target="_blank"><b>clique aqui</b></a>.</i> 
        <h2> * Monitoramento de tintas.</h2>
         <div class="card">
       <div class="card-header">

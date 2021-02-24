@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
+*/
 Auth::routes();
 Route::get('/faturamento', [App\Http\Controllers\HomeController::class, 'faturamento']);
 Route::get('/caixa', [App\Http\Controllers\HomeController::class, 'caixa']);
@@ -26,6 +26,7 @@ Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->n
 Auth::routes();
 
 Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
 Route::get('/send-email', [App\Http\Controllers\MailController::class, 'sendEmail']);
 /*
 Route::get('/home', function() {

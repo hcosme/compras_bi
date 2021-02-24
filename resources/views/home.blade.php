@@ -4,7 +4,7 @@
 <meta http-equiv="refresh" content="180">
 @section('content_header')
     <h1 class="m-0 text-dark">Monitoramento Materiais <a href="./send-email" type="button" class="btn btn-light swalDefaultSuccess">
-                  Reportar situação do estoque
+                  Reportar
                 </a> </h1>
 @stop
 <?php //dd($dados);?>
@@ -18,8 +18,8 @@
 @endif
 
 <blockquote class="quote-info">
-  <h5 id="tip">Orientações!</h5>
-  <p>Os dados são atualizados online. A página será atualizada a cada 2 minutos. 
+  <h5 id="tip">Alerta!</h5>
+  <p>A pagina atualizara automaticamente a cada 2 minutos. 
 </p>
 </blockquote>   <!--
     <div class="card-body">
@@ -156,14 +156,14 @@
     <table id="" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
-                          <th><center>Código</th>
+                          <th><center>Codigo</th>
                           <th><center>Item</th>
                           <th><center>Tipo</th>
-                          <th><center>Mínimo</th>
+                          <th><center>Minimo</th>
                           <th><center>Estoque</th>
-                          <th><center>Reposição estoque</th>
-                          <th><center>% disponível</th>
-                          <th><center>Reposição?</th>
+                          <th><center>Repos. estoque</th>
+                          <th><center>% disponivel</th>
+                         <!-- <th><center>Reposição?</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -210,14 +210,14 @@
         
             </div>
           </td>
-        <td><center>
+           <!--   <td><center>
         <?php 
-            if ($itens->CESTATUAL < $itens->MINIMO) {
+          /*  if ($itens->CESTATUAL < $itens->MINIMO) {
                 echo '<span class="badge bg-danger">Sim</span>'; 
             } else {
                 echo '<span class="badge bg-success">Não</span>';
-            }
-        ?></td>
+            } */
+        ?></td> -->
           
         </tr>
         @endforeach
@@ -238,14 +238,14 @@
     <table id="" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
-                          <th><center>Código</th>
+                         <th><center>Codigo</th>
                           <th><center>Item</th>
                           <th><center>Tipo</th>
-                          <th><center>Mínimo</th>
+                          <th><center>Minimo</th>
                           <th><center>Estoque</th>
-                          <th><center>Reposição estoque</th>
-                          <th><center>% disponível</th>
-                          <th><center>Reposição?</th>
+                          <th><center>Repos. estoque</th>
+                          <th><center>% disponivel</th>
+                         <!-- <th><center>Reposição?</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -292,14 +292,14 @@
         
             </div>
           </td>
-        <td><center>
+          <!--   <td><center>
         <?php 
-            if ($itens->CESTATUAL < $itens->MINIMO) {
+          /*  if ($itens->CESTATUAL < $itens->MINIMO) {
                 echo '<span class="badge bg-danger">Sim</span>'; 
             } else {
                 echo '<span class="badge bg-success">Não</span>';
-            }
-        ?></td>
+            } */
+        ?></td> -->
           
         </tr>
         @endforeach
@@ -314,19 +314,19 @@
 <br>
 <div class="card">
       <div class="card-header">
-                <h4 id="tip">Materiais Auxiliares</h4> * Itens igual ou abaixo do mínimo.<p>
+                <h4 id="tip">Materiais Auxiliares</h4> * Itens igual ou abaixo do minimo.<p>
     <div class="box-body table-responsive no-padding">
     <table id="" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
-                          <th><center>Código</th>
+                           <th><center>Codigo</th>
                           <th><center>Item</th>
                           <th><center>Tipo</th>
-                          <th><center>Mínimo</th>
+                          <th><center>Minimo</th>
                           <th><center>Estoque</th>
-                          <th><center>Reposição estoque</th>
-                          <th><center>% disponível</th>
-                          <th><center>Reposição?</th>
+                          <th><center>Repos. estoque</th>
+                          <th><center>% disponivel</th>
+                         <!-- <th><center>Reposição?</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -373,14 +373,14 @@
         
             </div>
           </td>
-        <td><center>
+           <!--   <td><center>
         <?php 
-            if ($itens->CESTATUAL < $itens->MINIMO) {
+          /*  if ($itens->CESTATUAL < $itens->MINIMO) {
                 echo '<span class="badge bg-danger">Sim</span>'; 
             } else {
                 echo '<span class="badge bg-success">Não</span>';
-            }
-        ?></td>
+            } */
+        ?></td> -->
           
         </tr>
         @endforeach
@@ -394,19 +394,19 @@
 <br>
 <div class="card">
       <div class="card-header">
-              <h4 id="tip">Limpeza</h4> * Itens igual ou abaixo do mínimo.<p>
+              <h4 id="tip">Limpeza</h4> * Itens igual ou abaixo do minimo.<p>
     <div class="box-body table-responsive no-padding">
     <table id="minhaTabela" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
-                          <th><center>Código</th>
+                         <th><center>Codigo</th>
                           <th><center>Item</th>
                           <th><center>Tipo</th>
-                          <th><center>Mínimo</th>
+                          <th><center>Minimo</th>
                           <th><center>Estoque</th>
-                          <th><center>Reposição estoque</th>
-                          <th><center>% disponível</th>
-                          <th><center>Reposição?</th>
+                          <th><center>Repos. estoque</th>
+                          <th><center>% disponivel</th>
+                         <!-- <th><center>Reposição?</th> -->
                     </tr>
                   </thead>
                   <tbody>
@@ -453,14 +453,14 @@
         
             </div>
           </td>
-        <td><center>
+      <!--   <td><center>
         <?php 
-            if ($itens->CESTATUAL < $itens->MINIMO) {
+          /*  if ($itens->CESTATUAL < $itens->MINIMO) {
                 echo '<span class="badge bg-danger">Sim</span>'; 
             } else {
                 echo '<span class="badge bg-success">Não</span>';
-            }
-        ?></td>
+            } */
+        ?></td> -->
           
         </tr>
         @endforeach
@@ -496,18 +496,18 @@
       $('#minhaTabela').DataTable({
           "order": [[ 0, "desc" ]],
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por página",
+                "lengthMenu": "Mostrando _MENU_ registros por pagina",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponível",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponivel",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Última",
-                    "next":       "Próxima",
+                    "last":       "Ultima",
+                    "next":       "Proxima",
                     "previous":   "Anterior"
                 },
             }
@@ -520,15 +520,15 @@
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
                 "info": "Mostrando página _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponível",
+                "infoEmpty": "Nenhum registro disponivel",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Última",
-                    "next":       "Próxima",
+                    "last":       "Ultima",
+                    "next":       "Proxima",
                     "previous":   "Anterior"
                 },
             }
@@ -547,7 +547,7 @@
     $('.swalDefaultSuccess').click(function() {
       Toast.fire({
         type: 'success',
-        title: 'Reportado com sucesso para a lista de destinatários cadastrados no sistema.'
+        title: 'Reportado com sucesso para a lista de destinatarios cadastrados no sistema.'
       })
     });
     $('.swalDefaultInfo').click(function() {

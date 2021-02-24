@@ -196,7 +196,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'intro',
+    'dashboard_url' => 'estoque',
 
     'logout_url' => 'logout',
 
@@ -263,7 +263,7 @@ return [
             [
                 'icon'    => 'fas fa-boxes',
                 'icon_color'   =>'red',
-                'text' => 'Situação estoque',
+                'text' => 'Estoque',
                 'url'  => 'estoque',
                 'label'       => 'Ativo',
                 'icon_color'   =>'success',
