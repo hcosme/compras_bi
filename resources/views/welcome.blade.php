@@ -52,7 +52,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                   Nesta guia vocÃª terÃ¡ acesso as informaÃ§Ãµes, conforme solicitaÃ§Ã£o do setor de atendimento.
+                                   Nesta guia você terá acesso as informações, conforme solicitação do setor de atendimento.
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    RelatÃ³rios para acompanhamento de produÃ§Ã£o e planejamento.
+                                    Relatórios para acompanhamento de produção e planejamento.
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    RelatÃ³rios para acompanhamento de financeiro.
+                                    Relatórios para acompanhamento de financeiro.
                                 </div>
                             </div>
                         </div>

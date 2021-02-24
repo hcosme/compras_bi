@@ -37,8 +37,6 @@ class HomeController extends Controller
                 i.cestminimo as minimo,
                 i.cestatual,
                 u.cnome
-
-
                 from itens i
                 left join unidades u on u.codigo=i.cunidest
                 where 1=1
@@ -47,17 +45,75 @@ class HomeController extends Controller
                 and i.itemprod<>'2'
                 and i.ativo<>0
                 order by 1");
-       // dd($select);
+      // dd($dados);
        // $dados = DB::select("SELECT * FROM itens");
-         //dd($dados);
+         
+        $dados['matAux'] = DB::select("select i.ccodigo as codigo,
+                i.cnome as item,
+                i.cestminimo as minimo,
+                i.cestatual,
+                u.cnome
+                from itens i
+                left join unidades u on u.codigo=i.cunidest
+                where 1=1
+                and i.cestminimo>0
+                and i.cestatual<=i.cestminimo
+                and i.itemprod<>'2'
+                and i.cnome like ('%MAT AUX%') OR i.cnome like ('Chapa Offset AGFA%')
+                and i.ativo<>0
+                order by 1");
+
+        $dados['cartucho'] = DB::select("select i.ccodigo as codigo,
+                i.cnome as item,
+                i.cestminimo as minimo,
+                i.cestatual,
+                u.cnome
+                from itens i
+                left join unidades u on u.codigo=i.cunidest
+                where 1=1
+                and i.cestminimo>0
+                and i.cestatual<=i.cestminimo
+                and i.itemprod<>'2'
+                and i.cnome like ('%CARTUCHO%') OR i.cnome like ('%cartucho%')
+                and i.ativo<>0
+                order by 1");
+
+         $dados['limpeza'] = DB::select("select i.ccodigo as codigo,
+                i.cnome as item,
+                i.cestminimo as minimo,
+                i.cestatual,
+                u.cnome
+                from itens i
+                left join unidades u on u.codigo=i.cunidest
+                where 1=1
+                and i.cestminimo>0
+                and i.cestatual<=i.cestminimo
+                and i.itemprod<>'2'
+                and i.cnome like ('%LIMPEZA%') OR i.cnome like ('%PANO DE LIMPEZA%') OR i.cnome like ('%Copo Descartavel%') 
+                and i.ativo<>0
+                order by 1");
+
+          $dados['tinta'] = DB::select("select i.ccodigo as codigo,
+                i.cnome as item,
+                i.cestminimo as minimo,
+                i.cestatual,
+                u.cnome
+                from itens i
+                left join unidades u on u.codigo=i.cunidest
+                where 1=1
+                and i.cestminimo>0
+               -- and i.cestatual<=i.cestminimo
+                and i.itemprod<>'2'
+                and i.cnome like ('NewV%') OR i.cnome like ('MAXXIMA%')
+                and i.ativo<>0
+                order by 1");
+
 
         $em_falta = DB::select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
                 u.cnome
-
-
                 from itens i
                 left join unidades u on u.codigo=i.cunidest
                 where 1=1
@@ -120,7 +176,7 @@ class HomeController extends Controller
     public function deletarEmail($id)
     {
         $dados = DB::delete("delete FROM emails where id = '".$id."'");
-        return redirect('/emailsEnviados')->with('success','ExcluÃ­do com sucesso.');
+        return redirect('/emailsEnviados')->with('success','Excluído com sucesso.');
     }
     
     public function store(Request $request) {
@@ -173,9 +229,9 @@ class HomeController extends Controller
 
         $quantidadeDias = 0;
         while ($tsInicio <= $tsFim) {
-            // Verifica se o dia Ã© igual a sÃ¡bado ou domingo, caso seja continua o loop
+            // Verifica se o dia é igual a sábado ou domingo, caso seja continua o loop
             $diaIgualFinalSemana = (date('D', $tsInicio) === 'Sat' || date('D', $tsInicio) === 'Sun');
-            // Verifica se Ã© feriado, caso seja continua o loop
+            // Verifica se é feriado, caso seja continua o loop
             $diaIgualFeriado = (count($feriados) && in_array(date('Y-m-d', $tsInicio), $feriados));
 
             $tsInicio += 86400; // 86400 quantidade de segundos em um dia
@@ -456,7 +512,6 @@ class HomeController extends Controller
              $total_faturamento = $d['total_faturamento'][0]->PRECO;
         }
             $d['total_saldo'] = ($total_faturamento + $libera_os + $liberado_faturamento) - $d['meta'][0]->META;
-           // dd($d);
         return view('faturamento', compact('d'));
     }
 
@@ -464,7 +519,6 @@ class HomeController extends Controller
 
      public function caixa(Request $request)
     {
-        //dd('aqui');
         $dados = [];
         if ($request->dataInicial || $request->dataFinal) {
             $dataInicial = $request->dataInicial;
@@ -650,7 +704,7 @@ class HomeController extends Controller
         $d['total_apagar28'] = DB::select($dados['total_apagar28']);
         $d['total_areceber7'] = DB::select($dados['total_areceber7']);
         $d['areceber'] = DB::select($dados['areceber']);
-        //dd($d['areceber']);
+
         $d['total_areceber14'] = DB::select($dados['total_areceber14']);
         $d['total_areceber21'] = DB::select($dados['total_areceber21']);
         $d['total_areceber28'] = DB::select($dados['total_areceber28']);
@@ -666,7 +720,6 @@ class HomeController extends Controller
         $d['saldo_caixa21'] = ($d['total_areceber21'][0]->VALORR + $d['total_saldo'][0]->SALDO)-$d['total_apagar21'][0]->VALORTOTAL;
         $d['saldo_caixa28'] = ($d['total_areceber28'][0]->VALORR + $d['total_saldo'][0]->SALDO)-$d['total_apagar28'][0]->VALORTOTAL;
        
-        
         return view('caixa', compact('d'));
     }
 

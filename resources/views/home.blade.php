@@ -1,10 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'InÃ­cio')
+@section('title', 'Estoque')
 <meta http-equiv="refresh" content="180">
 @section('content_header')
     <h1 class="m-0 text-dark">Monitoramento Materiais <a href="./send-email" type="button" class="btn btn-light swalDefaultSuccess">
-                  Reportar situaÃ§Ã£o do estoque
+                  Reportar situação do estoque
                 </a> </h1>
 @stop
 <?php //dd($dados);?>
@@ -18,10 +18,10 @@
 @endif
 
 <blockquote class="quote-info">
-  <h5 id="tip">OrientaÃ§Ãµes!</h5>
-  <p>Os dados sÃ£o atualizados online. A pÃ¡gina serÃ¡ atualizada a cada 2 minutos. 
+  <h5 id="tip">Orientações!</h5>
+  <p>Os dados são atualizados online. A página será atualizada a cada 2 minutos. 
 </p>
-</blockquote>
+</blockquote>   <!--
     <div class="card-body">
 
 <div class="row">
@@ -38,30 +38,30 @@
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </div>
+         <!--      </div>
             <!-- /.info-box -->
-          </div>
+       <!--      </div>
           <!-- /.col -->
 
           <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
+     <!--        <div class="clearfix hidden-md-up"></div>
 
           <div class="col-8 col-sm-6 col-md-4">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fa fa-exclamation-triangle"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">DisponÃ­vel (Abaixo do MÃ­nimo)</span>
+                <span class="info-box-text">Disponível (Abaixo do Mínimo)</span>
                 <span class="info-box-number">
                         {{  $dados['disponivel'] }} <br>
                 </span>
               </div>
               <!-- /.info-box-content -->
-            </div>
+     <!--          </div>
             <!-- /.info-box -->
-          </div>
+     <!--        </div>
           <!-- /.col -->
-          <div class="clearfix hidden-md-up"></div>
+     <!--        <div class="clearfix hidden-md-up"></div>
 
           <div class="col-8 col-sm-6 col-md-4">
             <div class="info-box mb-3">
@@ -72,9 +72,9 @@
                 <span class="info-box-number">  {{  ($dados['em_falta'] + $dados['disponivel']) }} </span>
               </div>
               <!-- /.info-box-content -->
-            </div>
+         <!--      </div>
             <!-- /.info-box -->
-          </div>
+      <!--       </div>
         </div>
     <!--        
 <div class="card">
@@ -85,7 +85,7 @@
                   <thead>
                    <tr class="bg-primary text-center py-0 align-middle ">
                     <th>Report</th>
-                    <th>DescriÃ§Ã£o</th>
+                    <th>Descrição</th>
                     <th>Total</th>
                     <th>% percentual</th>
                   </tr>
@@ -96,7 +96,7 @@
                       Itens em falta no estoque
                     </td>
                        <td>
-                      Soma do mÃ­nimo de todos os itens com quantidade igual Ã  0 no estoque.
+                      Soma do mínimo de todos os itens com quantidade igual à 0 no estoque.
                     </td>
                     <td>{{ $dados['em_falta'] }}</td>
                     <td>
@@ -111,10 +111,10 @@
                   </tr>
                   <tr>
                     <td>
-                      Itens disponÃ­veis no estoque
+                      Itens disponíveis no estoque
                     </td>
                        <td>
-                       Soma do estoque de todos os itens com quantidade igual Ã  maior que 0.
+                       Soma do estoque de todos os itens com quantidade igual à maior que 0.
                     </td>
                      <td>{{ $dados['disponivel'] }}</td>
                     <td>
@@ -131,7 +131,7 @@
                       Total de itens no estoque
                     </td>
                        <td>
-                      Contagem unitÃ¡ria de itens no estoque (considerando por tipo de item). 
+                      Contagem unitária de itens no estoque (considerando por tipo de item). 
                     </td>
                      <td>{{ ($dados['total']) }}</td>
                     <td>
@@ -149,31 +149,30 @@
               </div>
       </div>
 </div>-->
-<br>
 <div class="card">
       <div class="card-header">
-              <h4 id="tip">Itens igual ou abaixo do mÃ­nimo</h4><p>
+              <h4 id="tip">Tinta</h4> * Monitoramento de tintas.<p>
     <div class="box-body table-responsive no-padding">
-    <table id="minhaTabela" class="table table-sm table-striped table-hover dataTable">
+    <table id="" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
-                          <th><center>CÃ³digo</th>
+                          <th><center>Código</th>
                           <th><center>Item</th>
                           <th><center>Tipo</th>
-                          <th><center>MÃ­nimo</th>
+                          <th><center>Mínimo</th>
                           <th><center>Estoque</th>
-                          <th><center>ReposiÃ§Ã£o estoque</th>
-                          <th><center>% disponÃ­vel</th>
-                          <th><center>ReposiÃ§Ã£o?</th>
+                          <th><center>Reposição estoque</th>
+                          <th><center>% disponível</th>
+                          <th><center>Reposição?</th>
                     </tr>
                   </thead>
                   <tbody>
-                       @foreach($dados['dados'] as $itens)
+                       @foreach($dados['tinta'] as $itens)
         <tr>
           <td>{{ ucwords(strtolower($itens->CODIGO)) }}</td>
           <td><?php //dd($itens->ITEM);
                 if ($itens->ITEM != '') {
-                  echo ucwords(strtolower(mb_convert_encoding(substr(str_replace(['Âº','Âª','ï¿½'],'',$itens->ITEM),0,28), "UTF-8", "Windows-1252")));
+                  echo ucwords(strtolower(mb_convert_encoding(substr(str_replace(['º','ª','?'],'',$itens->ITEM),0,28), "UTF-8", "Windows-1252")));
                 } else{
                   echo '*****';
                 }
@@ -216,7 +215,7 @@
             if ($itens->CESTATUAL < $itens->MINIMO) {
                 echo '<span class="badge bg-danger">Sim</span>'; 
             } else {
-                echo '<span class="badge bg-success">NÃ£o</span>';
+                echo '<span class="badge bg-success">Não</span>';
             }
         ?></td>
           
@@ -230,7 +229,247 @@
 
      </div>
 
+<br>
 
+<div class="card">
+      <div class="card-header">
+              <h4 id="tip">Cartucho</h4> * Monitoramento de cartuchos.<p>
+    <div class="box-body table-responsive no-padding">
+    <table id="" class="table table-sm table-striped table-hover dataTable">
+                  <thead>
+                       <tr class="bg-primary text-center py-0 align-middle ">
+                          <th><center>Código</th>
+                          <th><center>Item</th>
+                          <th><center>Tipo</th>
+                          <th><center>Mínimo</th>
+                          <th><center>Estoque</th>
+                          <th><center>Reposição estoque</th>
+                          <th><center>% disponível</th>
+                          <th><center>Reposição?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                       @foreach($dados['cartucho'] as $itens)
+        <tr>
+          <td>{{ ucwords(strtolower($itens->CODIGO)) }}</td>
+          <td><?php //dd($itens->ITEM);
+                if ($itens->ITEM != '') {
+                  echo ucwords(strtolower(mb_convert_encoding(substr(str_replace(['º','ª','?'],'',$itens->ITEM),0,28), "UTF-8", "Windows-1252")));
+                } else{
+                  echo '*****';
+                }
+              ?></td>
+              <td><center>{{ $itens->CNOME }}</td>
+              <td><center>{{ number_format($itens->MINIMO, 0, ',', '.') }}</td>
+              <td><center>{{ number_format($itens->CESTATUAL, 0, ',', '.') }}</td>
+               <td><center>
+                 <?php 
+
+                    if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
+                         echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
+                    } else {
+                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                    }
+                ?>
+               
+               </td>
+          <td>
+            <div class="progress progress-xs">
+             
+              <?php
+              
+              $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
+              $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
+              if ($percent < 20) {
+                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+              } elseif ($percent >= 20 && $percent <= 50) {
+                echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
+              } else {
+                  echo '<div class="progress-bar progress-bar-success" style="width: '.$percent.'%"><span class="badge bg-success">'.$percent.'%</span></div>';
+              }
+              
+              ?>
+        
+            </div>
+          </td>
+        <td><center>
+        <?php 
+            if ($itens->CESTATUAL < $itens->MINIMO) {
+                echo '<span class="badge bg-danger">Sim</span>'; 
+            } else {
+                echo '<span class="badge bg-success">Não</span>';
+            }
+        ?></td>
+          
+        </tr>
+        @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+     </div>
+
+<br>
+<div class="card">
+      <div class="card-header">
+                <h4 id="tip">Materiais Auxiliares</h4> * Itens igual ou abaixo do mínimo.<p>
+    <div class="box-body table-responsive no-padding">
+    <table id="" class="table table-sm table-striped table-hover dataTable">
+                  <thead>
+                       <tr class="bg-primary text-center py-0 align-middle ">
+                          <th><center>Código</th>
+                          <th><center>Item</th>
+                          <th><center>Tipo</th>
+                          <th><center>Mínimo</th>
+                          <th><center>Estoque</th>
+                          <th><center>Reposição estoque</th>
+                          <th><center>% disponível</th>
+                          <th><center>Reposição?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                       @foreach($dados['matAux'] as $itens)
+        <tr>
+          <td>{{ ucwords(strtolower($itens->CODIGO)) }}</td>
+          <td><?php //dd($itens->ITEM);
+                if ($itens->ITEM != '') {
+                  echo ucwords(strtolower(mb_convert_encoding(substr(str_replace(['º','ª','?'],'',$itens->ITEM),0,28), "UTF-8", "Windows-1252")));
+                } else{
+                  echo '*****';
+                }
+              ?></td>
+              <td><center>{{ $itens->CNOME }}</td>
+              <td><center>{{ number_format($itens->MINIMO, 0, ',', '.') }}</td>
+              <td><center>{{ number_format($itens->CESTATUAL, 0, ',', '.') }}</td>
+               <td><center>
+                 <?php 
+
+                    if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
+                         echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
+                    } else {
+                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                    }
+                ?>
+               
+               </td>
+          <td>
+            <div class="progress progress-xs">
+             
+              <?php
+              
+              $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
+              $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
+              if ($percent < 20) {
+                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+              } elseif ($percent >= 20 && $percent <= 50) {
+                echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
+              } else {
+                  echo '<div class="progress-bar progress-bar-success" style="width: '.$percent.'%"><span class="badge bg-success">'.$percent.'%</span></div>';
+              }
+              
+              ?>
+        
+            </div>
+          </td>
+        <td><center>
+        <?php 
+            if ($itens->CESTATUAL < $itens->MINIMO) {
+                echo '<span class="badge bg-danger">Sim</span>'; 
+            } else {
+                echo '<span class="badge bg-success">Não</span>';
+            }
+        ?></td>
+          
+        </tr>
+        @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+
+     </div>
+<br>
+<div class="card">
+      <div class="card-header">
+              <h4 id="tip">Limpeza</h4> * Itens igual ou abaixo do mínimo.<p>
+    <div class="box-body table-responsive no-padding">
+    <table id="minhaTabela" class="table table-sm table-striped table-hover dataTable">
+                  <thead>
+                       <tr class="bg-primary text-center py-0 align-middle ">
+                          <th><center>Código</th>
+                          <th><center>Item</th>
+                          <th><center>Tipo</th>
+                          <th><center>Mínimo</th>
+                          <th><center>Estoque</th>
+                          <th><center>Reposição estoque</th>
+                          <th><center>% disponível</th>
+                          <th><center>Reposição?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                       @foreach($dados['limpeza'] as $itens)
+        <tr>
+          <td>{{ ucwords(strtolower($itens->CODIGO)) }}</td>
+          <td><?php //dd($itens->ITEM);
+                if ($itens->ITEM != '') {
+                  echo ucwords(strtolower(mb_convert_encoding(substr(str_replace(['º','ª','?'],'',$itens->ITEM),0,28), "UTF-8", "Windows-1252")));
+                } else{
+                  echo '*****';
+                }
+              ?></td>
+              <td><center>{{ $itens->CNOME }}</td>
+              <td><center>{{ number_format($itens->MINIMO, 0, ',', '.') }}</td>
+              <td><center>{{ number_format($itens->CESTATUAL, 0, ',', '.') }}</td>
+               <td><center>
+                 <?php 
+
+                    if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
+                         echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
+                    } else {
+                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                    }
+                ?>
+               
+               </td>
+          <td>
+            <div class="progress progress-xs">
+             
+              <?php
+              
+              $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
+              $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
+              if ($percent < 20) {
+                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+              } elseif ($percent >= 20 && $percent <= 50) {
+                echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
+              } else {
+                  echo '<div class="progress-bar progress-bar-success" style="width: '.$percent.'%"><span class="badge bg-success">'.$percent.'%</span></div>';
+              }
+              
+              ?>
+        
+            </div>
+          </td>
+        <td><center>
+        <?php 
+            if ($itens->CESTATUAL < $itens->MINIMO) {
+                echo '<span class="badge bg-danger">Sim</span>'; 
+            } else {
+                echo '<span class="badge bg-success">Não</span>';
+            }
+        ?></td>
+          
+        </tr>
+        @endforeach
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+     </div>
     </div>
     @section('js')
 <script>
@@ -257,18 +496,18 @@
       $('#minhaTabela').DataTable({
           "order": [[ 0, "desc" ]],
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }
@@ -278,18 +517,18 @@
     $(document).ready(function(){
       $('#minhaTabela1').DataTable({
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }
@@ -308,7 +547,7 @@
     $('.swalDefaultSuccess').click(function() {
       Toast.fire({
         type: 'success',
-        title: 'Reportado com sucesso para a lista de destinatÃ¡rios cadastrados no sistema.'
+        title: 'Reportado com sucesso para a lista de destinatários cadastrados no sistema.'
       })
     });
     $('.swalDefaultInfo').click(function() {

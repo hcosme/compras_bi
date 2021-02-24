@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Dashboard',
+    'title' => 'Walprint',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Dash</b>board',
+    'logo' => '<b>Wal</b>print',
     //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'TestWalprint',
+   // 'logo_img_class' => 'brand-image img-circle elevation-3',
+   // 'logo_img_xl' => null,
+   // 'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img_alt' => 'Walprint',
 
     /*
     |--------------------------------------------------------------------------
@@ -239,13 +239,13 @@ return [
     */
 
     'menu' => [
-        [
+     /*   [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
          [
-            'text'        => 'InÃ­cio',
+            'text'        => 'Início',
             'url'         => '',
             'icon'        => 'fa fa-home',
            // 'label'       => 'Report',
@@ -253,31 +253,31 @@ return [
         ],
         ['header' => 'Atendimento'],
             [
-                'text'        => 'Acomp. ProduÃ§Ã£o',
+                'text'        => 'Acomp. Produção',
                 'url'         => '#',
                 'icon'        => 'fas fa-clipboard-list',
               // 'label'       => 'Cash',
                 'label_color' => 'success',
-            ],
+            ], */
             ['header' => 'Compras'],
             [
                 'icon'    => 'fas fa-boxes',
                 'icon_color'   =>'red',
-                'text' => 'SituaÃ§Ã£o estoque',
+                'text' => 'Situação estoque',
                 'url'  => 'estoque',
                 'label'       => 'Ativo',
                 'icon_color'   =>'success',
             ],
-            ['header' => 'Depart. Pessoal'],
+          /*  ['header' => 'Depart. Pessoal'],
             [
-                'text'        => 'MapÃ£o de Custos',
+                'text'        => 'Mapão de Custos',
                    'url'         => '#',
                 'icon'        => 'fas fa-hand-holding-usd',
               // 'label'       => 'Cash',
                 'label_color' => 'success',
             ],
             [
-                'text'        => 'SolicitaÃ§Ãµes',
+                'text'        => 'Solicitações',
                    'url'         => '#',
                 'icon'        => 'fas fa-comment-alt',
               // 'label'       => 'Cash',
@@ -306,14 +306,14 @@ return [
                 'icon_color'   =>'success',
             ],
             [
-                'text'        => 'Saldo x PrevisÃ£o',
+                'text'        => 'Saldo x Previsão',
                     'url'         => '#',
                 'icon'        => 'fas fa-balance-scale',
               // 'label'       => 'Cash',
                 'label_color' => 'success',
             ],
             [
-                'text'        => 'InadimplÃªncia',
+                'text'        => 'Inadimplência',
                     'url'         => '#',
                 'icon'        => 'fas fa-exclamation-triangle',
               // 'label'       => 'Cash',
@@ -357,19 +357,19 @@ return [
             ],
             ['header' => 'PCP'],
             [
-                'text'        => 'ProduÃ§Ã£o MÃ¡quinas',
+                'text'        => 'Produção Máquinas',
                 'url'         => '#',
                 'icon'        => 'fas fa-chart-bar',
               // 'label'       => 'Cash',
                 'label_color' => 'success',
             ],
             [
-                'text'        => 'ProduÃ§Ã£o Operador',
+                'text'        => 'Produção Operador',
                 'url'         => '#',
                 'icon'        => 'fas fa-chart-pie',
               // 'label'       => 'Cash',
                 'label_color' => 'success',
-            ],
+            ], */
            
 
     ],

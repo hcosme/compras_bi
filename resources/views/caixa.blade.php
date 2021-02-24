@@ -190,8 +190,6 @@ Fluxo de caixa +14 Dias
           
           </div>
 </div>
-
-
                          <div class="card-body">
 Fluxo de caixa +21 Dias
 <div class="row">
@@ -309,7 +307,6 @@ Fluxo de caixa +28 Dias
           </div>
 </div>
 
-
 <div class="row">
         <div class="col-12">
             <div class="card">
@@ -368,14 +365,14 @@ Fluxo de caixa +28 Dias
             <div class="card">
                 <div class="card-body">
       <div class="card-header">
-              <h4 id="tip">(*) Ã€ Pagar</h4> *PerÃ­odo de +28 dias.<p>
+              <h4 id="tip">(*) À Pagar</h4> *Período de +28 dias.<p>
      <div class="box-body table-responsive no-padding">
 
  <table id="apagar" class="table table-sm table-striped table-bordered dataTable">
         <thead>
  <tr class="bg-primary text-center py-0 align-middle">
                 <th><center>Cliente</th>
-                <th><center>HistÃ³rico</th>
+                <th><center>Histórico</th>
                 <th><center>Vencimento</th>
                 <th><center>Valor</th>
             </tr>
@@ -420,14 +417,14 @@ Fluxo de caixa +28 Dias
             <div class="card">
                 <div class="card-body">
       <div class="card-header">
-              <h4 id="tip">(*) Ã€ Receber</h4> *PerÃ­odo de +28 dias.<p>
+              <h4 id="tip">(*) À Receber</h4> *Período de +28 dias.<p>
      <div class="box-body table-responsive no-padding">
 
  <table id="areceber" class="table table-sm table-striped table-bordered dataTable">
         <thead>
  <tr class="bg-primary text-center py-0 align-middle">
                 <th><center>Cliente</th>
-                <th><center>HistÃ³rico</th>
+                <th><center>Histórico</th>
                 <th><center>Vencimento</th>
                 <th><center>Valor</th>
             </tr>
@@ -489,18 +486,18 @@ Fluxo de caixa +28 Dias
   $(document).ready(function(){
       $('#minhaTabela2').DataTable({
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }
@@ -510,18 +507,18 @@ Fluxo de caixa +28 Dias
    $(document).ready(function(){
       $('#apagar').DataTable({
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }
@@ -531,18 +528,18 @@ Fluxo de caixa +28 Dias
     $(document).ready(function(){
       $('#areceber').DataTable({
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }

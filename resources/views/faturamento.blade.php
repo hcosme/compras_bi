@@ -89,7 +89,7 @@
               <span class="info-box-icon bg-info elevation-1"><i class="fa fa-hourglass-start"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Em produÃ§Ã£o</span>
+                <span class="info-box-text">Em produção</span>
                 <span class="info-box-number">
                         {{ 'R$ '.number_format($d['libera_os'], 2, ',', '.') }} <br>
                 </span>
@@ -253,7 +253,7 @@
                 <th><center>OS.</th>
                 <th><center>Saldo</th>
                 <th><center>Quant.</th>
-                <th><center>TÃ­tulo</th>
+                <th><center>Título</th>
             </tr>
         </thead>
         <tbody>
@@ -300,7 +300,7 @@
    <form role="form" method="get" action="">
                 <div class="row">
                   <div class="form-group col-md-3">
-                  <label for="exampleInputEmail1">InÃ­cio:</label>
+                  <label for="exampleInputEmail1">Início:</label>
                   <input type="date" class="form-control form-control-sm" name="inicio" id="inicio" value="" data-toggle="tooltip" data-placement="top" title="Selecione o dia que deseja trazer os resultados." >
                 </div>
                 <div class="form-group col-md-3">
@@ -341,18 +341,18 @@
   $(document).ready(function(){
       $('#minhaTabela').DataTable({
           "language": {
-                "lengthMenu": "Mostrando _MENU_ registros por pÃ¡gina",
+                "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
-                "info": "Mostrando pÃ¡gina _PAGE_ de _PAGES_",
-                "infoEmpty": "Nenhum registro disponÃ­vel",
+                "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponível",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",
                 "processing":     "Processando...",
                 "search":         "Pesquisar:",
                 "paginate": {
                     "first":      "Primeira",
-                    "last":       "Ãšltima",
-                    "next":       "PrÃ³xima",
+                    "last":       "Última",
+                    "next":       "Próxima",
                     "previous":   "Anterior"
                 },
             }
