@@ -160,6 +160,24 @@ class HomeController extends Controller
        // dd($dados);
         return view('home', compact('dados')); 
     }
+	
+	 public function requisicao()
+    {
+        $dados = [];
+      
+
+          $dados['requisicao'] = DB::select(" select
+			  m.CODITEM as codigo,
+			  m.NOMEITEM as item,
+			  r.data as data,
+			  m.quantidade as quantidade,
+			  m.quantest as estoque
+			  from reqdev r
+			  left join matreq m on m.codreq = r.codigo
+			  WHERE STATUS NOT IN ('ENCERR','CANC','') and r.data like '2021%'");
+
+        return view('requisicao', compact('dados')); 
+    }
     /*
     public function listarEmails()
     {

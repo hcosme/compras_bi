@@ -26,6 +26,7 @@ Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->n
 Auth::routes();
 
 Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
+Route::get('/requisicao', [App\Http\Controllers\HomeController::class, 'requisicao'])->name('requisicao');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
 Route::get('/send-email', [App\Http\Controllers\MailController::class, 'sendEmail']);
 /*

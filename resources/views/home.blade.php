@@ -2,6 +2,16 @@
 
 @section('title', 'Estoque')
 <meta http-equiv="refresh" content="180">
+<style>
+   .blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
+
+</style>
 @section('content_header')
     <h1 class="m-0 text-dark">Monitoramento Materiais <a href="./send-email" type="button" class="btn btn-light swalDefaultSuccess">
                   Reportar
@@ -21,139 +31,12 @@
   <h5 id="tip">Alerta!</h5>
   <p>A pagina atualizara automaticamente a cada 2 minutos. 
 </p>
-</blockquote>   <!--
-    <div class="card-body">
-
-<div class="row">
-
-          <div class="col-8 col-sm-12 col-md-4">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-exclamation-triangle"></i></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Estoque zero</span>
-                <span class="info-box-number">
-                {{ $dados['em_falta'] }}
-                  <small></small>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-         <!--      </div>
-            <!-- /.info-box -->
-       <!--      </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-     <!--        <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-8 col-sm-6 col-md-4">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-success elevation-1"><i class="fa fa-exclamation-triangle"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Disponível (Abaixo do Mínimo)</span>
-                <span class="info-box-number">
-                        {{  $dados['disponivel'] }} <br>
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-     <!--          </div>
-            <!-- /.info-box -->
-     <!--        </div>
-          <!-- /.col -->
-     <!--        <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-8 col-sm-6 col-md-4">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-truck"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Total</span>
-                <span class="info-box-number">  {{  ($dados['em_falta'] + $dados['disponivel']) }} </span>
-              </div>
-              <!-- /.info-box-content -->
-         <!--      </div>
-            <!-- /.info-box -->
-      <!--       </div>
-        </div>
-    <!--        
+</blockquote>  
 <div class="card">
       <div class="card-header">
-       <h4 id="tip">Overview Online</h4><p>
-              <div class="card-body table-responsive p-0">
-                <table class="table table-sm table-striped table-hover">
-                  <thead>
-                   <tr class="bg-primary text-center py-0 align-middle ">
-                    <th>Report</th>
-                    <th>Descrição</th>
-                    <th>Total</th>
-                    <th>% percentual</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>
-                      Itens em falta no estoque
-                    </td>
-                       <td>
-                      Soma do mínimo de todos os itens com quantidade igual à 0 no estoque.
-                    </td>
-                    <td>{{ $dados['em_falta'] }}</td>
-                    <td>
-                  <!--    <small class="text-danger mr-1">
-                        <i class="fas fa-arrow-down"></i>
-                        {{ round((($dados['em_falta']/($dados['em_falta']+$dados['disponivel']))*100),2).'%' }}
-                       
-                      </small> -->
-                
-              <!--      </td>
-                   
-                  </tr>
-                  <tr>
-                    <td>
-                      Itens disponíveis no estoque
-                    </td>
-                       <td>
-                       Soma do estoque de todos os itens com quantidade igual à maior que 0.
-                    </td>
-                     <td>{{ $dados['disponivel'] }}</td>
-                    <td>
-                      <small class="text-warning mr-1">
-                        <i class="fa fa-arrow-up"></i>
-                       {{ round((($dados['disponivel']/($dados['em_falta']+$dados['disponivel']))*100),2).'%' }}
-                      </small>
-                     
-                    </td>
-                   
-                  </tr>
-               <!--   <tr>
-                    <td>
-                      Total de itens no estoque
-                    </td>
-                       <td>
-                      Contagem unitária de itens no estoque (considerando por tipo de item). 
-                    </td>
-                     <td>{{ ($dados['total']) }}</td>
-                    <td>
-                      <small class="text-success mr-1">
-                        <i class="fa fa-truck"></i>
-                        -
-                      </small>
-                      
-                    </td>
-                   
-                  </tr>
-                  -->
-              <!--      </tbody>
-                </table>
-              </div>
-      </div>
-</div>-->
-<div class="card">
-      <div class="card-header">
-              <h4 id="tip">Tinta</h4> * Monitoramento de tintas.<p>
+              <h4 id="tip">Tintas</h4> * Monitoramento de tintas.<p>
     <div class="box-body table-responsive no-padding">
-    <table id="" class="table table-sm table-striped table-hover dataTable">
+    <table id="minhaTabela" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
                           <th><center>Codigo</th>
@@ -184,9 +67,9 @@
                  <?php 
 
                     if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
-                         echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
+                         echo '<small class="text-success mr-1 "><i class="fas fa-arrow-up"></i> 0</small>'; 
                     } else {
-                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                        echo '<small class="text-danger mr-1 blink_me"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
                     }
                 ?>
                
@@ -199,7 +82,7 @@
               $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
               $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
               if ($percent < 20) {
-                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+                echo '<div class="progress-bar progress-bar-danger blink_me" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
               } elseif ($percent >= 20 && $percent <= 50) {
                 echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
               } else {
@@ -233,9 +116,9 @@
 
 <div class="card">
       <div class="card-header">
-              <h4 id="tip">Cartucho</h4> * Monitoramento de cartuchos.<p>
+              <h4 id="tip">Cartuchos</h4> * Monitoramento de cartuchos.<p>
     <div class="box-body table-responsive no-padding">
-    <table id="" class="table table-sm table-striped table-hover dataTable">
+    <table id="minhaTabela1" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
                          <th><center>Codigo</th>
@@ -268,7 +151,7 @@
                     if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
                          echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
                     } else {
-                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                        echo '<small class="text-danger mr-1 blink_me"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
                     }
                 ?>
                
@@ -281,7 +164,7 @@
               $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
               $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
               if ($percent < 20) {
-                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+                echo '<div class="progress-bar progress-bar-danger blink_me" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
               } elseif ($percent >= 20 && $percent <= 50) {
                 echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
               } else {
@@ -316,7 +199,7 @@
       <div class="card-header">
                 <h4 id="tip">Materiais Auxiliares</h4> * Itens igual ou abaixo do minimo.<p>
     <div class="box-body table-responsive no-padding">
-    <table id="" class="table table-sm table-striped table-hover dataTable">
+    <table id="minhaTabela2" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
                            <th><center>Codigo</th>
@@ -349,7 +232,7 @@
                     if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
                          echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
                     } else {
-                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                        echo '<small class="text-danger mr-1 blink_me"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
                     }
                 ?>
                
@@ -362,7 +245,7 @@
               $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
               $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
               if ($percent < 20) {
-                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+                echo '<div class="progress-bar progress-bar-danger blink_me" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
               } elseif ($percent >= 20 && $percent <= 50) {
                 echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
               } else {
@@ -394,9 +277,9 @@
 <br>
 <div class="card">
       <div class="card-header">
-              <h4 id="tip">Limpeza</h4> * Itens igual ou abaixo do minimo.<p>
+              <h4 id="tip">Materiais de Limpezas</h4> * Itens igual ou abaixo do minimo.<p>
     <div class="box-body table-responsive no-padding">
-    <table id="minhaTabela" class="table table-sm table-striped table-hover dataTable">
+    <table id="minhaTabela3" class="table table-sm table-striped table-hover dataTable">
                   <thead>
                        <tr class="bg-primary text-center py-0 align-middle ">
                          <th><center>Codigo</th>
@@ -429,7 +312,7 @@
                     if ($itens->CESTATUAL >= $itens->MINIMO || $itens->CESTATUAL == $itens->MINIMO) {
                          echo '<small class="text-success mr-1"><i class="fas fa-arrow-up"></i> 0</small>'; 
                     } else {
-                        echo '<small class="text-danger mr-1"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
+                        echo '<small class="text-danger mr-1 blink_me"><i class="fas fa-arrow-down"></i> '.($itens->MINIMO - $itens->CESTATUAL).'</small>';
                     }
                 ?>
                
@@ -442,7 +325,7 @@
               $percent = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2);
               $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
               if ($percent < 20) {
-                echo '<div class="progress-bar progress-bar-danger" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
+                echo '<div class="progress-bar progress-bar-danger blink_me" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
               } elseif ($percent >= 20 && $percent <= 50) {
                 echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
               } else {
@@ -520,6 +403,72 @@
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
                 "info": "Mostrando página _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponivel",
+                "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                "loadingRecords": "Carregando...",
+                "processing":     "Processando...",
+                "search":         "Pesquisar:",
+                "paginate": {
+                    "first":      "Primeira",
+                    "last":       "Ultima",
+                    "next":       "Proxima",
+                    "previous":   "Anterior"
+                },
+            }
+        });
+  });
+  
+    $(document).ready(function(){
+      $('#minhaTabela2').DataTable({
+          "order": [[ 0, "desc" ]],
+          "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por pagina",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponivel",
+                "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                "loadingRecords": "Carregando...",
+                "processing":     "Processando...",
+                "search":         "Pesquisar:",
+                "paginate": {
+                    "first":      "Primeira",
+                    "last":       "Ultima",
+                    "next":       "Proxima",
+                    "previous":   "Anterior"
+                },
+            }
+        });
+  });
+  
+    $(document).ready(function(){
+      $('#minhaTabela3').DataTable({
+          "order": [[ 0, "desc" ]],
+          "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por pagina",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                "infoEmpty": "Nenhum registro disponivel",
+                "infoFiltered": "(filtrado de _MAX_ registros no total)",
+                "loadingRecords": "Carregando...",
+                "processing":     "Processando...",
+                "search":         "Pesquisar:",
+                "paginate": {
+                    "first":      "Primeira",
+                    "last":       "Ultima",
+                    "next":       "Proxima",
+                    "previous":   "Anterior"
+                },
+            }
+        });
+  });
+  
+    $(document).ready(function(){
+      $('#minhaTabela4').DataTable({
+          "order": [[ 0, "desc" ]],
+          "language": {
+                "lengthMenu": "Mostrando _MENU_ registros por pagina",
+                "zeroRecords": "Nada encontrado",
+                "info": "Mostrando pagina _PAGE_ de _PAGES_",
                 "infoEmpty": "Nenhum registro disponivel",
                 "infoFiltered": "(filtrado de _MAX_ registros no total)",
                 "loadingRecords": "Carregando...",

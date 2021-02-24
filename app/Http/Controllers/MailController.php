@@ -104,14 +104,14 @@ class MailController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-
-
-
-
        $remetentes = [
-          1 => 'h.oliveira556@gmail.com',
-          2 => 'havila@walprint.com.br',
-          3 => 'havilacosme92@gmail.com'
+          1 => 'havila@walprint.com.br',
+		  2 => 'almoxarifado@walprint.com.br',
+		  3 => 'havilacosme92@gmail.com',
+		  4 => 'compras@walprint.com.br',
+		  5 => 'suprimentos@walprint.com.br',
+		  6 => 'graziele@walprint.com.br',
+		  7 => 'walter@walprint.com.br'
        ];
       foreach ($remetentes as $emailsEnvio) {
         $email = $emailsEnvio;    
