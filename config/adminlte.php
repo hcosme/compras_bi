@@ -107,6 +107,13 @@ return [
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
     */
+      'classes_auth_card' => '',
+    'classes_auth_header' => 'bg-gradient-info',
+    'classes_auth_body' => '',
+    'classes_auth_footer' => 'text-center',
+    'classes_auth_icon' => 'fa-lg text-info',
+    'classes_auth_btn' => 'btn-flat btn-info',
+    /*
 
     'classes_auth_card' => '',
     'classes_auth_header' => 'bg-gradient-info',
@@ -115,7 +122,7 @@ return [
     'classes_auth_icon' => 'fa-lg text-info',
     'classes_auth_btn' => 'btn-flat btn-info',
 
-
+*/
     /*
     |--------------------------------------------------------------------------
     | Admin Panel Classes
@@ -239,11 +246,7 @@ return [
     */
 
     'menu' => [
-     /*   [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
+     
          [
             'text'        => 'Início',
             'url'         => '',
@@ -251,7 +254,7 @@ return [
            // 'label'       => 'Report',
             'label_color' => 'success',
         ],
-        ['header' => 'Atendimento'],
+      /*     ['header' => 'Atendimento'],
             [
                 'text'        => 'Acomp. Produção',
                 'url'         => '#',

@@ -377,7 +377,7 @@
 
   $(document).ready(function(){
       $('#minhaTabela').DataTable({
-          "order": [[ 0, "desc" ]],
+          "order": [[ 6, "asc" ]],
           "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por pagina",
                 "zeroRecords": "Nada encontrado",
@@ -399,6 +399,7 @@
   
     $(document).ready(function(){
       $('#minhaTabela1').DataTable({
+         "order": [[ 6, "asc" ]],
           "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por página",
                 "zeroRecords": "Nada encontrado",
@@ -420,7 +421,7 @@
   
     $(document).ready(function(){
       $('#minhaTabela2').DataTable({
-          "order": [[ 0, "desc" ]],
+          "order": [[ 6, "asc" ]],
           "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por pagina",
                 "zeroRecords": "Nada encontrado",
@@ -442,7 +443,7 @@
   
     $(document).ready(function(){
       $('#minhaTabela3').DataTable({
-          "order": [[ 0, "desc" ]],
+           "order": [[ 6, "asc" ]],
           "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por pagina",
                 "zeroRecords": "Nada encontrado",
@@ -464,7 +465,7 @@
   
     $(document).ready(function(){
       $('#minhaTabela4').DataTable({
-          "order": [[ 0, "desc" ]],
+           "order": [[ 6, "asc" ]],
           "language": {
                 "lengthMenu": "Mostrando _MENU_ registros por pagina",
                 "zeroRecords": "Nada encontrado",

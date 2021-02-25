@@ -19,7 +19,19 @@
                     data-accordion="false"
                 @endif>
                 {{-- Configured sidebar links --}}
-                @each('adminlte::partials.sidebar.menu-item', $adminlte->menu('sidebar'), 'item')
+                 <?php
+                    // dd(Auth::user()->almoxarifado);
+                    $params = [];
+             
+                        $params['inicio']  = $adminlte->menu('sidebar')[0];
+                    if(Auth::user()->almoxarifado == 1){
+                        $params['almoxarifado']  = $adminlte->menu('sidebar')[1];
+                        $params['almoxarifadoest']  = $adminlte->menu('sidebar')[2];
+                        $params['almoxarifadoreq']  = $adminlte->menu('sidebar')[3];
+                    }
+                   
+                ;?>
+                @each('adminlte::partials.sidebar.menu-item', $params, 'item')
             </ul>
         </nav>
     </div>

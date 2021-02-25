@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $dados = [];
-        $dados['dados'] = DB::select("select i.ccodigo as codigo,
+        $dados['dados'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -45,10 +45,10 @@ class HomeController extends Controller
                 and i.itemprod<>'2'
                 and i.ativo<>0
                 order by 1");
-      // dd($dados);
+     // dd($dados);
        // $dados = DB::select("SELECT * FROM itens");
          
-        $dados['matAux'] = DB::select("select i.ccodigo as codigo,
+        $dados['matAux'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -63,7 +63,7 @@ class HomeController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-        $dados['cartucho'] = DB::select("select i.ccodigo as codigo,
+        $dados['cartucho'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -78,7 +78,7 @@ class HomeController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-         $dados['limpeza'] = DB::select("select i.ccodigo as codigo,
+         $dados['limpeza'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -93,7 +93,7 @@ class HomeController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-          $dados['tinta'] = DB::select("select i.ccodigo as codigo,
+          $dados['tinta'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -109,7 +109,7 @@ class HomeController extends Controller
                 order by 1");
 
 
-        $em_falta = DB::select("select i.ccodigo as codigo,
+        $em_falta = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -123,7 +123,7 @@ class HomeController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-        $disponivel = DB::select("select i.ccodigo as codigo,
+        $disponivel = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -139,7 +139,7 @@ class HomeController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-        $total = DB::select("select i.ccodigo as codigo,
+        $total = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -166,7 +166,7 @@ class HomeController extends Controller
         $dados = [];
       
 
-          $dados['requisicao'] = DB::select(" select
+          $dados['requisicao'] = DB::connection('firebird')->select(" select
               m.CODITEM as codigo,
               m.NOMEITEM as item,
               r.data as data,
@@ -492,18 +492,18 @@ class HomeController extends Controller
                    ";
         // $dados = connection('firebird')->select($saldo);
         $d = [];
-        $d['faturamento'] = DB::select($dados['faturamento']);
-        $d['total_faturamento'] = DB::select($dados['total_faturamento']);
-        $d['meta'] = DB::select($dados['meta']);
-        $d['apagar'] = DB::select($dados['apagar']);
-        $d['total_apagar'] = DB::select($dados['total_apagar']);
-        $d['areceber'] = DB::select($dados['areceber']);
-        $d['total_areceber'] = DB::select($dados['total_areceber']);
-        $d['total_saldo'] = DB::select($dados['total_saldo']);
-        $d['saldo'] = DB::select($dados['saldo']);
-        $d['oslib'] = DB::select($dados['oslib']);
-        $d['dias_uteis'] = DB::select($dados['dias_uteis']);
-        $d['liberado_faturamento'] = DB::select($dados['liberado_faturamento']);
+        $d['faturamento'] = DB::connection('firebird')->select($dados['faturamento']);
+        $d['total_faturamento'] = DB::connection('firebird')->select($dados['total_faturamento']);
+        $d['meta'] = DB::connection('firebird')->select($dados['meta']);
+        $d['apagar'] = DB::connection('firebird')->select($dados['apagar']);
+        $d['total_apagar'] = DB::connection('firebird')->select($dados['total_apagar']);
+        $d['areceber'] = DB::connection('firebird')->select($dados['areceber']);
+        $d['total_areceber'] = DB::connection('firebird')->select($dados['total_areceber']);
+        $d['total_saldo'] = DB::connection('firebird')->select($dados['total_saldo']);
+        $d['saldo'] = DB::connection('firebird')->select($dados['saldo']);
+        $d['oslib'] = DB::connection('firebird')->select($dados['oslib']);
+        $d['dias_uteis'] = DB::connection('firebird')->select($dados['dias_uteis']);
+        $d['liberado_faturamento'] = DB::connection('firebird')->select($dados['liberado_faturamento']);
         $d['dias_corridos'] = $this->getDiasUteis($dataInicial, $diaOntem);
         $d['libera_os'] =  $d['total_areceber'][0]->VALORR-$d['liberado_faturamento'][0]->VALOR;
 
@@ -715,24 +715,24 @@ class HomeController extends Controller
 
 
         $d = [];
-        $d['apagar'] = DB::select($dados['apagar']);
-        $d['total_apagar7'] = DB::select($dados['total_apagar7']);
-        $d['total_apagar14'] = DB::select($dados['total_apagar14']);
-        $d['total_apagar21'] = DB::select($dados['total_apagar21']);
-        $d['total_apagar28'] = DB::select($dados['total_apagar28']);
-        $d['total_areceber7'] = DB::select($dados['total_areceber7']);
-        $d['areceber'] = DB::select($dados['areceber']);
+        $d['apagar'] = DB::connection('firebird')->select($dados['apagar']);
+        $d['total_apagar7'] = DB::connection('firebird')->select($dados['total_apagar7']);
+        $d['total_apagar14'] = DB::connection('firebird')->select($dados['total_apagar14']);
+        $d['total_apagar21'] = DB::connection('firebird')->select($dados['total_apagar21']);
+        $d['total_apagar28'] = DB::connection('firebird')->select($dados['total_apagar28']);
+        $d['total_areceber7'] = DB::connection('firebird')->select($dados['total_areceber7']);
+        $d['areceber'] = DB::connection('firebird')->select($dados['areceber']);
 
-        $d['total_areceber14'] = DB::select($dados['total_areceber14']);
-        $d['total_areceber21'] = DB::select($dados['total_areceber21']);
-        $d['total_areceber28'] = DB::select($dados['total_areceber28']);
-        $d['total_saldo'] = DB::select($dados['total_saldo']);
-        $d['dias_uteis'] = DB::select($dados['dias_uteis']);
+        $d['total_areceber14'] = DB::connection('firebird')->select($dados['total_areceber14']);
+        $d['total_areceber21'] = DB::connection('firebird')->select($dados['total_areceber21']);
+        $d['total_areceber28'] = DB::connection('firebird')->select($dados['total_areceber28']);
+        $d['total_saldo'] = DB::connection('firebird')->select($dados['total_saldo']);
+        $d['dias_uteis'] = DB::connection('firebird')->select($dados['dias_uteis']);
   
        
-        $d['saldo'] = DB::select($dados['saldo']);
-        $d['oslib'] = DB::select($dados['oslib']);
-        $d['liberado_faturamento'] = DB::select($dados['liberado_faturamento']);
+        $d['saldo'] = DB::connection('firebird')->select($dados['saldo']);
+        $d['oslib'] = DB::connection('firebird')->select($dados['oslib']);
+        $d['liberado_faturamento'] = DB::connection('firebird')->select($dados['liberado_faturamento']);
         $d['saldo_caixa7'] = ($d['total_areceber7'][0]->VALORR + $d['total_saldo'][0]->SALDO)-$d['total_apagar7'][0]->VALORTOTAL;
         $d['saldo_caixa14'] = ($d['total_areceber14'][0]->VALORR + $d['total_saldo'][0]->SALDO)-$d['total_apagar14'][0]->VALORTOTAL;
         $d['saldo_caixa21'] = ($d['total_areceber21'][0]->VALORR + $d['total_saldo'][0]->SALDO)-$d['total_apagar21'][0]->VALORTOTAL;

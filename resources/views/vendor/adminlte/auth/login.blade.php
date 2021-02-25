@@ -1,6 +1,12 @@
 @extends('adminlte::auth.auth-page', ['auth_type' => 'login'])
+<meta http-equiv="refresh" content="120">
 
 @section('adminlte_css_pre')
+<body 
+style="background-image: url(https://trakcel.com/wp-content/uploads/2018/09/593e6640bedace68bd411e4c_apple_desktop-wallpaper-1024x576-1.jpg); 
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;">
     <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 @stop
 
@@ -17,6 +23,7 @@
     @php( $register_url = $register_url ? url($register_url) : '' )
     @php( $password_reset_url = $password_reset_url ? url($password_reset_url) : '' )
 @endif
+
 
 @section('auth_header', __('adminlte::adminlte.login_message'))
 
@@ -57,40 +64,45 @@
         </div>
 
         {{-- Login field --}}
-        <div class="row">
+      <!--  <div class="row">
             <div class="col-7">
                 <div class="icheck-primary">
                     <input type="checkbox" name="remember" id="remember">
                     <label for="remember">{{ __('adminlte::adminlte.remember_me') }}</label>
                 </div>
-            </div>
+            </div> --><center>
             <div class="col-5">
                 <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
                     <span class="fas fa-sign-in-alt"></span>
                     {{ __('adminlte::adminlte.sign_in') }}
-                </button>
+                </button></center>
             </div>
         </div>
 
     </form>
 @stop
-
+@push('scripts')
+   <script type="text/javascript"> 
+    document.body.style.backgroundImage = "url('mundo-corporativo.jpg')"; 
+   </script>
+@endpush
+<script type="text/javascript"> document.body.style.backgroundImage = "url('img_tree.png')"; </script>  
 @section('auth_footer')
     {{-- Password reset link --}}
     @if($password_reset_url)
-        <p class="my-0">
+       <!-- <p class="my-0">
             <a href="{{ $password_reset_url }}">
                 {{ __('adminlte::adminlte.i_forgot_my_password') }}
             </a>
-        </p>
+        </p> -->
     @endif
 
     {{-- Register link --}}
-    @if($register_url)
-        <p class="my-0">
+   @if($register_url)
+     <!--    <p class="my-0">
             <a href="{{ $register_url }}">
                 {{ __('adminlte::adminlte.register_a_new_membership') }}
             </a>
-        </p>
-    @endif
+        </p> -->
+    @endif 
 @stop

@@ -12,22 +12,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+
 Route::get('/', function () {
     return view('welcome');
-});
-*/
+})->middleware('auth');
+
 Auth::routes();
-Route::get('/faturamento', [App\Http\Controllers\HomeController::class, 'faturamento']);
-Route::get('/caixa', [App\Http\Controllers\HomeController::class, 'caixa']);
-Route::get('/intro', [App\Http\Controllers\HomeController::class, 'intro']);
-Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
+Route::get('/faturamento', [App\Http\Controllers\HomeController::class, 'faturamento'])->middleware('auth');
+Route::get('/caixa', [App\Http\Controllers\HomeController::class, 'caixa'])->middleware('auth');
+Route::get('/intro', [App\Http\Controllers\HomeController::class, 'intro'])->middleware('auth');
+Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
-Route::get('/requisicao', [App\Http\Controllers\HomeController::class, 'requisicao'])->name('requisicao');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque');
+Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque')->middleware('auth');
+Route::get('/requisicao', [App\Http\Controllers\HomeController::class, 'requisicao'])->name('requisicao')->middleware('auth');
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque')->middleware('auth');
 Route::get('/send-email', [App\Http\Controllers\MailController::class, 'sendEmail']);
 /*
 Route::get('/home', function() {

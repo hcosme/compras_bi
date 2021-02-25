@@ -30,49 +30,7 @@
            </div>
           
           </div>
-<!--
-<div class="card-footer">
-                <div class="row">
-                  <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-"></i> </span>
-                      <h5 class="description-header"></h5>
-                      <span class="description-text">Fluxo de caixa +07 Dias</span>
-                    </div>
-                    <!-- /.description-block -->
-       <!--           </div>
-                  <!-- /.col -->
-    <!--              <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
-                      <h5 class="description-header"> {{ 'R$ '.number_format($d['total_apagar7'][0]->VALORTOTAL, 2, ',', '.') }}</h5>
-                      <span class="description-text">A pagar</span>
-                    </div>
-                    <!-- /.description-block -->
-      <!--            </div>
-                  <!-- /.col -->
-     <!--             <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                     <!-- <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span> -->
-       <!--               <h5 class="description-header">    {{ 'R$ '.number_format($d['total_areceber7'][0]->VALORR, 2, ',', '.') }}</h5>
-                      <span class="description-text">A receber</span>
-                    </div>
-                    <!-- /.description-block -->
-       <!--           </div>
-                      <!-- /.col -->
-       <!--           <div class="col-sm-3 col-6">
-                    <div class="description-block border-right">
-                      <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
-                      <h5 class="description-header"> {{ 'R$ '.number_format($d['saldo_caixa7'], 2, ',', '.') }}</h5>
-                      <span class="description-text">Saldo</span>
-                    </div>
-                    <!-- /.description-block -->
-    <!--              </div>
-                  <!-- /.col -->
-     <!--           </div>
-                <!-- /.row -->
-      <!--        </div>
--->
+
 
                          <div class="card-body">
 Fluxo de caixa +07 Dias
@@ -247,7 +205,6 @@ Fluxo de caixa +21 Dias
           
           </div>
 </div>
-
 
                          <div class="card-body">
 Fluxo de caixa +28 Dias

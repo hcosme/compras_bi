@@ -12,7 +12,7 @@ class MailController extends Controller
 {
    public function sendEmail() {
        $dados = [];
-       $dados['primeiro']= DB::select("select i.ccodigo as codigo,
+       $dados['primeiro']= DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -28,7 +28,7 @@ class MailController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-         $dados['dados'] = DB::select("select i.ccodigo as codigo,
+         $dados['dados'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -44,7 +44,7 @@ class MailController extends Controller
       // dd($dados);
        // $dados = DB::select("SELECT * FROM itens");
          
-        $dados['matAux'] = DB::select("select i.ccodigo as codigo,
+        $dados['matAux'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -59,7 +59,7 @@ class MailController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-        $dados['cartucho'] = DB::select("select i.ccodigo as codigo,
+        $dados['cartucho'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -74,7 +74,7 @@ class MailController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-         $dados['limpeza'] = DB::select("select i.ccodigo as codigo,
+         $dados['limpeza'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
@@ -89,7 +89,7 @@ class MailController extends Controller
                 and i.ativo<>0
                 order by 1");
 
-          $dados['tinta'] = DB::select("select i.ccodigo as codigo,
+          $dados['tinta'] = DB::connection('firebird')->select("select i.ccodigo as codigo,
                 i.cnome as item,
                 i.cestminimo as minimo,
                 i.cestatual,
