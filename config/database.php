@@ -90,14 +90,21 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-		
+		/*
+        DB_FIREBIRD_HOST=192.168.254.155
+		DB_FIREBIRD_DATABASE=K:\Ecalc\Dados\WALPRINT.FDB
+		DB_FIREBIRD_USERNAME=SYSDBA
+		DB_FIREBIRD_PASSWORD=masterkey
+		DB_FIREBIRD_CHARSET=ISO-8859-2
+		*/
+
 		'firebird' => [
 			'driver'=> 'firebird',
-			'host'=> env('DB_FIREBIRD_HOST', 'localhost'),
-			'database' => env('DB_FIREBIRD_DATABASE', 'C:\Ecalc\Dados\WALPRINT_NOVO.FDB'),
+			'host'=> env('DB_FIREBIRD_HOST', '192.168.254.155'),
+			'database' => env('DB_FIREBIRD_DATABASE', 'K:\Ecalc\Dados\WALPRINT.FDB'),
 			'username' => env('DB_FIREBIRD_USERNAME', 'SYSDBA'),
 			'password' => env('DB_FIREBIRD_PASSWORD', 'masterkey'),
-			'charset' => env('DB_FIREBIRD_CHARSET', 'UTF8'),
+			'charset' => env('DB_FIREBIRD_CHARSET', 'ISO-8859-'),
     ],
 
     ],
