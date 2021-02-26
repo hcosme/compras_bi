@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RedirectIfAuthenticated
 {
@@ -19,6 +20,15 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        $data_hora = date('d/m/Y H:i:s');
+        $produtoEditando = DB::table('users')
+            ->where('email', $request->email)
+            ->update(
+            [
+                'ultimo_login' => $data_hora
+            ]
+        );
+
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
