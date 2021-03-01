@@ -22,17 +22,21 @@
                  <?php
                     // dd(Auth::user()->almoxarifado);
                     $params = [];
-             
-                        $params['inicio']  = $adminlte->menu('sidebar')[0];
+                    if(Auth::user()->admin == 1){
+                        $params['admin']  = $adminlte->menu('sidebar')[0];
+                    }
+                    $params['inicio']  = $adminlte->menu('sidebar')[1];
+
                     if(Auth::user()->almoxarifado == 1){
-                        $params['almoxarifado']  = $adminlte->menu('sidebar')[1];
-                        $params['almoxarifadoest']  = $adminlte->menu('sidebar')[2];
-                        $params['almoxarifadoreq']  = $adminlte->menu('sidebar')[3];
+                        $params['almoxarifado']  = $adminlte->menu('sidebar')[2];
+                        $params['almoxarifadoest']  = $adminlte->menu('sidebar')[3];
+                        $params['almoxarifadoreq']  = $adminlte->menu('sidebar')[4];
                     }
                     if(Auth::user()->financeiro == 1){
-                        $params['financeiroT']  = $adminlte->menu('sidebar')[4];
-                        $params['financeiroF']  = $adminlte->menu('sidebar')[5];
-                        $params['financeiroC']  = $adminlte->menu('sidebar')[6];
+                        $params['financeiroT']  = $adminlte->menu('sidebar')[5];
+                        $params['financeiroF']  = $adminlte->menu('sidebar')[6];
+                        $params['financeiroC']  = $adminlte->menu('sidebar')[7];
+                        $params['saldo']  = $adminlte->menu('sidebar')[8];
                     }
                 ;?>
                 @each('adminlte::partials.sidebar.menu-item', $params, 'item')

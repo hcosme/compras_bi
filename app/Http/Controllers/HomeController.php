@@ -215,6 +215,45 @@ class HomeController extends Controller
 }
 
 */
+public function editarAcesso($id){
+    $logado = auth()->user()->id;
+    $acessoEditar =  DB::table('users')->where('id', $id)->get();
+    $acesso = $acessoEditar[0];
+    return view('editarAcesso',['acesso' => $acesso]);
+  }
+  
+  public function updateAcesso(Request $request, $id){
+    $saidaEditando = DB::table('users')
+      ->where('id', $request['id'])
+      ->update(
+        [
+        'almoxarifado' => $request['almoxarifado'],
+        'financeiro' => $request['financeiro']
+        ]);
+    return redirect('/acesso')->with('success','Atualizado com sucesso.');
+  }
+  
+    public function acesso(){
+     //   if($logado = auth()->user()->status == 'SUSPENSO'){
+      /*  return redirect()->action([BoletoController::class, 'listarCobranca'])->with('warning', 'Estamos aguardando a compensação bancária para liberarmos o acesso ao sistema. Em até 48hs seu acesso será liberado. Se preferir entre em contato pelo suporte@hcontro.com ou clique em ocorrência para relatar.');   
+        } */
+       // $id = auth()->user()->proprietario;
+        $usuarios = DB::select("Select * from users");
+        return view('acesso', compact('usuarios'));
+    }
+
+       public function saldo(){
+     //   if($logado = auth()->user()->status == 'SUSPENSO'){
+      /*  return redirect()->action([BoletoController::class, 'listarCobranca'])->with('warning', 'Estamos aguardando a compensação bancária para liberarmos o acesso ao sistema. Em até 48hs seu acesso será liberado. Se preferir entre em contato pelo suporte@hcontro.com ou clique em ocorrência para relatar.');   
+        } */
+       // $id = auth()->user()->proprietario;
+        $saldo = [];
+        $saldo['limites'] = DB::select("Select * from saldo where tipo in ('limite','garantida')");
+        $saldo['saldos'] = DB::select("Select * from saldo where tipo in ('saldo')");
+        return view('saldo', compact('saldo'));
+    }
+
+
 
         function getDiasUteis($dataInicio, $dataFim) {
         $P_Dia_Mes_Atual = date("Y-m-01 00:00:00:00");

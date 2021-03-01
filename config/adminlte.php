@@ -46,10 +46,10 @@ return [
     */
 
     'logo' => '<b>Wal</b>print',
-    //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-   // 'logo_img_class' => 'brand-image img-circle elevation-3',
-   // 'logo_img_xl' => null,
-   // 'logo_img_xl_class' => 'brand-image-xs',
+    'logo_img' => 'vendor/adminlte/dist/img/pngegg.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_xl' => null,
+    'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Walprint',
 
     /*
@@ -246,14 +246,21 @@ return [
     */
 
     'menu' => [
-     
          [
+            'text'        => 'Acessos',
+            'url'         => 'acesso',
+            'icon'        => 'fa fa-users',
+           // 'label'       => 'Report',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Início',
             'url'         => '',
             'icon'        => 'fa fa-home',
            // 'label'       => 'Report',
             'label_color' => 'success',
         ],
+
       /*     ['header' => 'Atendimento'],
             [
                 'text'        => 'Acomp. Produção',
@@ -292,6 +299,13 @@ return [
                 'text'        => 'Fluxo de Caixa',
                 'url'         => 'caixa',
                 'icon'        => 'fas fa-chart-line',
+                'label'       => 'Ativo',
+                'icon_color'   =>'success',
+            ],
+                 [
+                'text'        => 'Saldo',
+                'url'         => 'saldo',
+                'icon'        => 'fas fa-balance-scale',
                 'label'       => 'Ativo',
                 'icon_color'   =>'success',
             ],

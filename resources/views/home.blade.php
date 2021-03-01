@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+<link rel="sortcut icon" href="favicon.ico" type="image/x-icon" />;
+
 @section('title', 'Estoque')
 <meta http-equiv="refresh" content="180">
 <style>

@@ -12,7 +12,12 @@
 @endif
 
 @section('auth_header', __('adminlte::adminlte.register_message'))
-
+<body 
+style="background-image: url(https://trakcel.com/wp-content/uploads/2018/09/593e6640bedace68bd411e4c_apple_desktop-wallpaper-1024x576-1.jpg); 
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;">
+    <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 @section('auth_body')
     <form action="{{ $register_url }}" method="post">
         {{ csrf_field() }}

@@ -8,6 +8,7 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;">
     <link rel="stylesheet" href="{{ asset('vendor/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <link rel="icon" href="http://192.168.254.78:8080/testeWalprint/storage/app/public/pngegg.png">
 @stop
 
 @php( $login_url = View::getSection('login_url') ?? config('adminlte.login_url', 'login') )
