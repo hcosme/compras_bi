@@ -280,6 +280,21 @@ return [
                 'label_color' => 'success',
                         'icon_color'   =>'success',
             ],
+              ['header' => 'Financeiro'],
+            [
+                'text'    => 'Faturamento',
+                'icon'    => 'fas fa-donate',
+                'url'         => 'faturamento',
+                'label'       => 'Ativo',
+                'icon_color'   =>'success',
+            ],
+            [
+                'text'        => 'Fluxo de Caixa',
+                'url'         => 'caixa',
+                'icon'        => 'fas fa-chart-line',
+                'label'       => 'Ativo',
+                'icon_color'   =>'success',
+            ],
           /*  ['header' => 'Depart. Pessoal'],
             [
                 'text'        => 'Mapão de Custos',
@@ -302,21 +317,7 @@ return [
               // 'label'       => 'Cash',
                 'label_color' => 'success',
             ],
-            ['header' => 'Financeiro'],
-            [
-                'text'    => 'Faturamento',
-                'icon'    => 'fas fa-donate',
-                'url'         => 'faturamento',
-                'label'       => 'Ativo',
-                'icon_color'   =>'success',
-            ],
-            [
-                'text'        => 'Fluxo de Caixa',
-                'url'         => 'caixa',
-                'icon'        => 'fas fa-chart-line',
-                'label'       => 'Ativo',
-                'icon_color'   =>'success',
-            ],
+          
             [
                 'text'        => 'Saldo x Previsão',
                     'url'         => '#',

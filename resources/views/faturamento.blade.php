@@ -8,9 +8,120 @@
 @stop
 
 @section('content')
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
 
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Mês', 'Faturado'],
+          <?php 
+            if ($d['faturamento'] > 0) {
+              foreach($d['faturamento'] as $key => $dados) {
+                echo '["'.$dados->DIAFAT.'",'.$dados->PRECO.'],';
+              }
+            } else {
+              echo '[0,0]';
+            }
+
+          ?>
+         
+        ]);
+
+         var view = new google.visualization.DataView(data);
+    /*  view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+*/
+
+        var options = {
+           pointShape: 'diamond',
+             trendlines: {
+            0: {
+              labelInLegend: 'Faturado line',
+              visibleInLegend: true,
+            }
+          },
+          colors: ['#48D1CC', '#48D1CC'],
+         // title : 'Informação de Faturamento (Real Time)',
+          vAxis: {
+          //  title: 'valor'
+          },
+          isStacked: true,
+          hAxis: {
+            side: 'top',
+            title: 'dia'
+          },
+        
+          seriesType: 'line',
+          is3D: true,
+          series: {0: {type: 'bars'}},
+          bar: {groupWidth: "90%"},
+          legend: 'none',//{position: 'top', maxLines: 8},
+          backgroundColor: 
+          {
+            fill:'white'        
+          }
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+/*
+      google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawTrendlines);
+
+function drawTrendlines() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'dia'); // Implicit domain label col.
+    data.addColumn('number', 'faturado'); // Implicit series 1 data col.
+    data.addColumn({type:'number'});  // interval role col.
+    data.addColumn({type:'number'});  // interval role col.
+    data.addColumn({type:'number'});  // interval role col.
+    data.addColumn({type:'boolean',role:'certainty'}); // certainty col.
+    data.addRows([
+        <?php 
+        //  $sum = 0;
+        //    foreach($d['faturamento'] as $key => $dados) {
+            //  $sum += $dados->PRECO;
+           //   echo '["'.$dados->DIAFAT.'",'.$dados->PRECO.',0,0,'.$sum.',true],';
+     //       }
+          ?>
+    ]);
+  // Create and draw the visualization.
+  new google.visualization.ColumnChart(document.getElementById('chart_div1')).
+    draw(data,
+           {
+            //title:"Yearly Coffee Consumption by Country",
+            width:600, height:400,
+            hAxis: {title: "Year"},
+            legend:'none',
+            colors:['#48D1CC','yellow','green'],
+             bar: {groupWidth: "90%"},
+            //isStacked: true,
+            series:{
+              3:{type:'line',areaOpacity:0}
+            }
+            //interpolateNulls: true
+           }
+      );
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div1'));
+      chart.draw(data, options);
+    } */
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+ <!-- <div id="chart_div1"></div> -->
                          <div class="card-body">
-
 <div class="row">
 
           <div class="col-8 col-sm-12 col-md-2">
@@ -135,6 +246,7 @@
           </div>
           <!-- /.col -->
         </div>
+       
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -152,6 +264,7 @@
                  }
 
             ?>)</h4><p>
+
                  <?php 
                  if (request()->inicio == '' || request()->fim == '' ) {
                     $dataInicial = '01/'.date('m/Y');
@@ -165,7 +278,8 @@
 
                    // $mesAtual = date('m/Y');
                     echo 'Data entre '.$dataInicial.' e '.$dataAtual.'*(*Data atual)'
-                    ;?> </center>
+                    ;?> </center><br>
+                    <div id="chart_div" style="width: 1190px; height: 250px;"></div><br>
     <div class="box-body table-responsive no-padding">
     <table id="" class="table table-sm table-striped">
         <thead>

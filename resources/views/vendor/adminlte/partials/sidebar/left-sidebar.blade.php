@@ -29,7 +29,11 @@
                         $params['almoxarifadoest']  = $adminlte->menu('sidebar')[2];
                         $params['almoxarifadoreq']  = $adminlte->menu('sidebar')[3];
                     }
-                   
+                    if(Auth::user()->financeiro == 1){
+                        $params['financeiroT']  = $adminlte->menu('sidebar')[4];
+                        $params['financeiroF']  = $adminlte->menu('sidebar')[5];
+                        $params['financeiroC']  = $adminlte->menu('sidebar')[6];
+                    }
                 ;?>
                 @each('adminlte::partials.sidebar.menu-item', $params, 'item')
             </ul>

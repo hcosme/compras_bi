@@ -104,7 +104,7 @@ return [
 			'database' => env('DB_FIREBIRD_DATABASE', 'K:\Ecalc\Dados\WALPRINT.FDB'),
 			'username' => env('DB_FIREBIRD_USERNAME', 'SYSDBA'),
 			'password' => env('DB_FIREBIRD_PASSWORD', 'masterkey'),
-			'charset' => env('DB_FIREBIRD_CHARSET', 'ISO-8859-'),
+			'charset' => env('DB_FIREBIRD_CHARSET', 'ISO-8859-2'),
     ],
 
     ],

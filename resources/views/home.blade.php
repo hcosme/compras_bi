@@ -83,7 +83,7 @@
               $percent2 = round(((1-($itens->MINIMO-$itens->CESTATUAL)/$itens->MINIMO)*100),2).'%';
               if ($percent < 20) {
                 echo '<div class="progress-bar progress-bar-danger blink_me" style="width: 100%"><span class="badge bg-danger">'.$percent.'%</span></div>';
-              } elseif ($percent >= 20 && $percent <= 50) {
+              } elseif ($percent >= 20 && $percent <= 80) {
                 echo '<div class="progress-bar progress-bar-warning" style="width: '.$percent.'%"><span class="badge bg-warning">'.$percent.'%</span></div>';
               } else {
                   echo '<div class="progress-bar progress-bar-success" style="width: '.$percent.'%"><span class="badge bg-success">'.$percent.'%</span></div>';
@@ -356,6 +356,26 @@
     </div>
     @section('js')
 <script>
+var mixedChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        datasets: [{
+            label: 'Bar Dataset',
+            data: [10, 20, 30, 40],
+            // this dataset is drawn below
+            order: 1
+        }, {
+            label: 'Line Dataset',
+            data: [10, 10, 10, 10],
+            type: 'line',
+            // this dataset is drawn on top
+            order: 2
+        }],
+        labels: ['January', 'February', 'March', 'April']
+    },
+    options: options
+});
+
 
     $(document).ready(function() {
     var table = $('#example').DataTable({

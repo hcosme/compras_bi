@@ -286,6 +286,9 @@ class HomeController extends Controller
             $dataFinal = $U_Dia_Mes_Atual.' 23:59:59';
         } 
         
+   
+
+
 
 
         $dados['faturamento'] = "select
@@ -537,6 +540,8 @@ class HomeController extends Controller
 
      public function caixa(Request $request)
     {
+
+
         $dados = [];
         if ($request->dataInicial || $request->dataFinal) {
             $dataInicial = $request->dataInicial;
@@ -554,7 +559,10 @@ class HomeController extends Controller
             $dataFinal21 = date('Y-m-d 00:00:00', $date21);
             $dataFinal28 = date('Y-m-d 00:00:00', $date28);
         } 
-        $inicioBanco = '2000-01-01 00:00:00';
+
+
+
+        $inicioBanco = '01/01/2000 00:00:00';
         $dados['apagar'] = "select
         ap.dataemit,
         ap.prop,
@@ -601,6 +609,14 @@ class HomeController extends Controller
         and d.fluxocaixa<>1
         ";
 
+        $date7 = strtotime("+7 day", $date);
+        $date14 = strtotime("+14 day", $date);
+        $date21 = strtotime("+21 day", $date);
+        $date28 = strtotime("+28 day", $date);
+        $dataFinal7 = date('m/d/Y', $date7);
+        $dataFinal14 = date('m/d/Y', $date14);
+        $dataFinal21 = date('m/d/Y', $date21);
+        $dataFinal28 = date('m/d/Y', $date28);
 
         $dados['areceber'] = "select
             extract (year from datavenc) as ano_venc,
@@ -611,10 +627,10 @@ class HomeController extends Controller
             ap.datapag,
             ap.valorreal
             from receber ap
-            inner join destino d on d.ccodigo=ap.coddest
+         --   inner join destino d on d.ccodigo=ap.coddest
             where 1=1
             and ap.datapag between '".$inicioBanco."' and '".$dataFinal28."'
-            and d.fluxocaixa<>1
+          --  and d.fluxocaixa<>1
             order by 1 desc, ap.datapag"; 
 
 
@@ -622,10 +638,10 @@ class HomeController extends Controller
         $dados['total_areceber7'] = "select
             sum(ap.valorreal) as valorr
             from receber ap
-            inner join destino d on d.ccodigo=ap.coddest
+          --  inner join destino d on d.ccodigo=ap.coddest
             where 1=1
             and ap.datapag between '".$inicioBanco."' and '".$dataFinal7."'
-            and d.fluxocaixa<>1 group by ap.valorreal
+            group by ap.valorreal
             order by 1 desc
         ";
 
@@ -633,10 +649,11 @@ class HomeController extends Controller
         $dados['total_areceber14'] = "select
               sum(ap.valorreal) as valorr
             from receber ap
-            inner join destino d on d.ccodigo=ap.coddest
+          --  inner join destino d on d.ccodigo=ap.coddest
             where 1=1
             and ap.datapag between '".$inicioBanco."' and '".$dataFinal14."'
-            and d.fluxocaixa<>1 group by ap.valorreal
+          --  and d.fluxocaixa<>1 
+            group by ap.valorreal
             order by 1 desc
       
         ";
@@ -645,10 +662,11 @@ class HomeController extends Controller
         $dados['total_areceber21'] = "select
              sum(ap.valorreal) as valorr
             from receber ap
-            inner join destino d on d.ccodigo=ap.coddest
+          --  inner join destino d on d.ccodigo=ap.coddest
             where 1=1
             and ap.datapag between '".$inicioBanco."' and '".$dataFinal21."'
-            and d.fluxocaixa<>1 group by ap.valorreal
+          --  and d.fluxocaixa<>1 
+            group by ap.valorreal
             order by 1 desc
       
         ";
@@ -657,10 +675,11 @@ class HomeController extends Controller
         $dados['total_areceber28'] = "select 
             sum(ap.valorreal) as valorr
             from receber ap
-            inner join destino d on d.ccodigo=ap.coddest
+         --   inner join destino d on d.ccodigo=ap.coddest
             where 1=1
             and ap.datapag between '".$inicioBanco."' and '".$dataFinal28."'
-            and d.fluxocaixa<>1 group by ap.valorreal
+         --   and d.fluxocaixa<>1 
+            group by ap.valorreal
             order by 1 desc
       
         ";
@@ -722,7 +741,7 @@ class HomeController extends Controller
         $d['total_apagar28'] = DB::connection('firebird')->select($dados['total_apagar28']);
         $d['total_areceber7'] = DB::connection('firebird')->select($dados['total_areceber7']);
         $d['areceber'] = DB::connection('firebird')->select($dados['areceber']);
-
+       // dd($d['total_areceber7']);
         $d['total_areceber14'] = DB::connection('firebird')->select($dados['total_areceber14']);
         $d['total_areceber21'] = DB::connection('firebird')->select($dados['total_areceber21']);
         $d['total_areceber28'] = DB::connection('firebird')->select($dados['total_areceber28']);
