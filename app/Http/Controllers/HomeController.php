@@ -234,23 +234,207 @@ public function editarAcesso($id){
   }
   
     public function acesso(){
-     //   if($logado = auth()->user()->status == 'SUSPENSO'){
-      /*  return redirect()->action([BoletoController::class, 'listarCobranca'])->with('warning', 'Estamos aguardando a compensação bancária para liberarmos o acesso ao sistema. Em até 48hs seu acesso será liberado. Se preferir entre em contato pelo suporte@hcontro.com ou clique em ocorrência para relatar.');   
-        } */
-       // $id = auth()->user()->proprietario;
         $usuarios = DB::select("Select * from users");
         return view('acesso', compact('usuarios'));
     }
 
        public function saldo(){
-     //   if($logado = auth()->user()->status == 'SUSPENSO'){
-      /*  return redirect()->action([BoletoController::class, 'listarCobranca'])->with('warning', 'Estamos aguardando a compensação bancária para liberarmos o acesso ao sistema. Em até 48hs seu acesso será liberado. Se preferir entre em contato pelo suporte@hcontro.com ou clique em ocorrência para relatar.');   
-        } */
-       // $id = auth()->user()->proprietario;
-        $saldo = [];
-        $saldo['limites'] = DB::select("Select * from saldo where tipo in ('limite','garantida')");
-        $saldo['saldos'] = DB::select("Select * from saldo where tipo in ('saldo')");
-        return view('saldo', compact('saldo'));
+        $d = [];
+        /* 
+        01 = 01-Walprint Gráfica e Editora Eireli.
+        02 = 99-WB
+        03 = COLORUM GRAFICA E EDITORA  LTDA
+        04 = 04-Caixa
+        05 = ZDESATIV-PW - Caixa
+        07 = 02-Imprimindo Conhecimento Editora e Grafica Ltda
+        08 = GRAFFA INDUSTRIA GRFICA EIRELI
+        10 = DESATIVADA- 09 - Superar Gráfica e Editora Eireli.
+        ZDESATIV-Print Business Soluções Editoriais Ltda
+        */
+
+        $inicioBanco = '01/01/2000';
+        $dados = [];
+        $dados['total_areceber_hoje_wp'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$inicioBanco."' and '".date('m/d/Y')."'
+            and ap.filial = '1'";
+
+        $dados['total_areceber_hoje_cl'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$inicioBanco."' and '".date('m/d/Y')."'
+            and ap.filial = '3'";
+
+        $dados['total_areceber_hoje_ic'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$inicioBanco."' and '".date('m/d/Y')."'
+            and ap.filial = '7'";
+
+        $dados['total_areceber_hoje_gf'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$inicioBanco."' and '".date('m/d/Y')."'
+            and ap.filial = '8'";
+
+        $dados['total_apagar_hoje_wp'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+              '".$inicioBanco."' and '".date('Y-m-d')."'
+            and ap.filial = '1'";
+
+             $dados['total_apagar_hoje_cl'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+              '".$inicioBanco."' and '".date('Y-m-d')."'
+           and ap.filial = '3'";
+
+                 $dados['total_apagar_hoje_ic'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+             '".$inicioBanco."' and '".date('Y-m-d')."'
+            and ap.filial = '7'";
+
+
+                 $dados['total_apagar_hoje_gf'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+              '".$inicioBanco."' and '".date('Y-m-d')."'
+              and ap.filial = '8'";
+
+
+              /* SEMANA */
+            $dataInicial = date('m/d/Y');
+            $date = $dataInicial;
+            $date1 = strtotime($date);
+            $diaHoje = date('d')+01;
+            $mes = date('m');
+            $ano = date('Y');
+            if ($diaHoje < 10) {
+                $diaHoje = '0'.$diaHoje;
+            }
+            $amanha = $mes.'/'.$diaHoje.'/'.$ano;
+            $d['sextaFeira'] = DB::select("Select inicio, fim, fimP from semana");
+      
+
+            $sextaFeira = $d['sextaFeira'][0]->fimP;
+            $sextaFeiraP = $d['sextaFeira'][0]->fim;
+      
+               $dados['total_areceber_semana_wp'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$amanha."' and '".$sextaFeira."'
+            and ap.filial = '1'";
+
+        $dados['total_areceber_semana_cl'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$amanha."' and '".$sextaFeira."'
+            and ap.filial = '3'";
+
+        $dados['total_areceber_semana_ic'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$amanha."' and '".$sextaFeira."'
+            and ap.filial = '7'";
+
+        $dados['total_areceber_semana_gf'] = "select 
+         sum(ap.valorreal) as valorr
+            from receber ap
+            where ap.datapag between '".$amanha."' and '".$sextaFeira."'
+            and ap.filial = '8'";
+
+        $dados['total_apagar_semana_wp'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+            '".$amanha."' and '". $sextaFeiraP."'
+            and ap.filial = '1'";
+
+             $dados['total_apagar_semana_cl'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+             '".$amanha."' and '". $sextaFeiraP."'
+           and ap.filial = '3'";
+
+                 $dados['total_apagar_semana_ic'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+            '".$amanha."' and '". $sextaFeiraP."'
+            and ap.filial = '7'";
+
+
+                 $dados['total_apagar_semana_gf'] = "select
+        sum(ap.valorreal) as valorr
+            from apagar ap
+            where ap.datapag between 
+             '".$amanha."' and '". $sextaFeiraP."'
+              and ap.filial = '8'"; 
+
+                /* TOTAL A RECEBER*/
+
+
+
+
+
+     
+        $d['total_areceber_hoje_wp'] = DB::connection('firebird')->select($dados['total_areceber_hoje_wp']);
+        $d['total_areceber_hoje_cl'] = DB::connection('firebird')->select($dados['total_areceber_hoje_cl']);
+        $d['total_areceber_hoje_ic'] = DB::connection('firebird')->select($dados['total_areceber_hoje_ic']);
+        $d['total_areceber_hoje_gf'] = DB::connection('firebird')->select($dados['total_areceber_hoje_gf']);
+
+        $d['total_apagar_hoje_wp'] = DB::connection('firebird')->select($dados['total_apagar_hoje_wp']);
+        $d['total_apagar_hoje_cl'] = DB::connection('firebird')->select($dados['total_apagar_hoje_cl']);
+        $d['total_apagar_hoje_ic'] = DB::connection('firebird')->select($dados['total_apagar_hoje_ic']);
+        $d['total_apagar_hoje_gf'] = DB::connection('firebird')->select($dados['total_apagar_hoje_gf']);
+
+        // SEMANA
+
+        $d['total_areceber_semana_wp'] = DB::connection('firebird')->select($dados['total_areceber_semana_wp']);
+        $d['total_areceber_semana_cl'] = DB::connection('firebird')->select($dados['total_areceber_semana_cl']);
+        $d['total_areceber_semana_ic'] = DB::connection('firebird')->select($dados['total_areceber_semana_ic']);
+        $d['total_areceber_semana_gf'] = DB::connection('firebird')->select($dados['total_areceber_semana_gf']);
+
+        $d['total_apagar_semana_wp'] = DB::connection('firebird')->select($dados['total_apagar_semana_wp']);
+        $d['total_apagar_semana_cl'] = DB::connection('firebird')->select($dados['total_apagar_semana_cl']);
+        $d['total_apagar_semana_ic'] = DB::connection('firebird')->select($dados['total_apagar_semana_ic']);
+        $d['total_apagar_semana_gf'] = DB::connection('firebird')->select($dados['total_apagar_semana_gf']);
+        
+        // TOTAL
+
+        $d['total_areceber_tsemana_wp'] =  $d['total_areceber_hoje_wp']+ $d['total_areceber_semana_wp'];
+        $d['total_areceber_tsemana_cl'] =  $d['total_areceber_hoje_cl']+ $d['total_areceber_semana_cl'];
+        $d['total_areceber_tsemana_ic'] =  $d['total_areceber_hoje_ic']+ $d['total_apagar_semana_ic'];
+        $d['total_areceber_tsemana_gf'] =  $d['total_areceber_hoje_gf']+ $d['total_apagar_semana_gf'];
+
+        $d['total_apagar_tsemana_wp'] =  $d['total_apagar_hoje_wp']+ $d['total_apagar_semana_wp'];
+        $d['total_apagar_tsemana_cl'] =  $d['total_apagar_hoje_cl']+ $d['total_apagar_semana_cl'];
+        $d['total_apagar_tsemana_ic'] =  $d['total_apagar_hoje_ic']+ $d['total_apagar_semana_ic'];
+        $d['total_apagar_tsemana_gf'] =  $d['total_apagar_hoje_gf']+ $d['total_apagar_semana_gf'];
+
+        $d['limites'] = DB::select("Select * from saldo where tipo in ('limite','garantida')");
+        $d['saldos'] = DB::select("Select * from saldo where tipo in ('saldo')");
+        $d['total_saldo_cl'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('saldo') and empresa = 'colorum'");
+        $d['total_saldo_ic'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('saldo') and empresa = 'imprimindo conhecimento'");
+        $d['total_saldo_gf'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('saldo') and empresa = 'graffa'");
+        $d['total_saldo_wp'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('saldo') and empresa = 'walprint'");
+        $d['total_saldo'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('saldo') and empresa in ('walprint','colorum','imprimindo conhecimento','graffa')");
+
+        $d['total_limite_cl'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('limite') and empresa = 'colorum'");
+        $d['total_limite_ic'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('limite') and empresa = 'imprimindo conhecimento'");
+        $d['total_limite_gf'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('limite') and empresa = 'graffa'");
+        $d['total_limite_wp'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('limite') and empresa = 'walprint'");
+        $d['total_limite'] = DB::select("Select sum(valor) as VALORR from saldo where tipo in ('limite') and empresa in ('walprint','colorum','imprimindo conhecimento','graffa')");
+        //dd($d);
+   
+        return view('saldo', compact('d'));
     }
 
 
@@ -325,9 +509,6 @@ public function editarAcesso($id){
             $dataFinal = $U_Dia_Mes_Atual.' 23:59:59';
         } 
         
-   
-
-
 
 
         $dados['faturamento'] = "select
