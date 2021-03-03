@@ -34,9 +34,9 @@
                     }
                     if(Auth::user()->financeiro == 1){
                         $params['financeiroT']  = $adminlte->menu('sidebar')[5];
-                        $params['financeiroF']  = $adminlte->menu('sidebar')[6];
-                        $params['financeiroC']  = $adminlte->menu('sidebar')[7];
+                       // $params['financeiroC']  = $adminlte->menu('sidebar')[7];
                         $params['saldo']  = $adminlte->menu('sidebar')[8];
+                        $params['financeiroF']  = $adminlte->menu('sidebar')[6];
                     }
                 ;?>
                 @each('adminlte::partials.sidebar.menu-item', $params, 'item')

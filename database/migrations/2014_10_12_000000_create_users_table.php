@@ -25,10 +25,11 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->integer('almoxarifado')->default(0);
             $table->integer('financeiro')->default(0);
+            $table->integer('editar_saldo')->default(0);
             $table->integer('logistica')->default(0);
             $table->integer('pcp')->default(0);
             $table->string('ultimo_login', 255);
-
+            $table->integer('admin')->default(0);
         });
     }
 

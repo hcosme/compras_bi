@@ -24,7 +24,8 @@ Route::get('/caixa', [App\Http\Controllers\HomeController::class, 'caixa'])->mid
 Route::get('/intro', [App\Http\Controllers\HomeController::class, 'intro'])->middleware('auth');
 Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque')->middleware('auth');
 Route::get('/saldo', [App\Http\Controllers\HomeController::class, 'saldo'])->name('saldo')->middleware('auth');
-Route::get('/editarSaldo', [App\Http\Controllers\HomeController::class, 'saldo'])->name('editarSaldo')->middleware('auth');
+Route::get('/editarSaldo/{id}', [App\Http\Controllers\HomeController::class, 'editarSaldo'])->name('editarSaldo')->middleware('auth');
+Route::post('/editarSaldo/{id}', [App\Http\Controllers\HomeController::class, 'updateSaldo'])->name('editarSaldo')->middleware('auth');
 Route::get('/editarAcesso/{id}', [App\Http\Controllers\HomeController::class, 'editarAcesso'])->middleware('auth');
 Route::post('/editarAcesso/{id}', [App\Http\Controllers\HomeController::class, 'updateAcesso'])->middleware('auth');
 Route::get('/excluirAcesso/{id}', [App\Http\Controllers\HomeController::class, 'excluirAcesso'])->middleware('auth');
@@ -36,7 +37,7 @@ Route::get('/estoque', [App\Http\Controllers\HomeController::class, 'index'])->n
 Route::get('/requisicao', [App\Http\Controllers\HomeController::class, 'requisicao'])->name('requisicao')->middleware('auth');
 //Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('estoque')->middleware('auth');
 Route::get('/send-email', [App\Http\Controllers\MailController::class, 'sendEmail']);
-/*
+
 Route::get('/home', function() {
-    return view('home');
-})->name('home');//->middleware('auth'); */
+    return view('welcome');
+})->name('home')->middleware('auth'); 
